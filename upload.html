@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h3>일반 파일 업로드</h3>
+    <form
+      action="http://localhost:3000/fileupload"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="filename" id="" />
+      <input type="submit" value="업로드" />
+    </form>
+    <hr />
+    <h3>이미지 업로드</h3>
+    <form
+      action="http://localhost:3000/imgupload"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="image" id="" />
+      <input type="submit" value="업로드" />
+    </form>
+
+    <script>
+      // http://192.168.0.19:5500/upload.html   ->호출하는 쪽
+      // CROS 규칙 (보안관련)
+      // 리소스 = '자원'이라는 의미
+      // 5500실행되는 서버에서 express 서버인 3000번으로 실행
+      fetch("http://localhost:3000/bookList") // -> 호출받는 쪽
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((err) => console.error(err));
+    </script>
+  </body>
+</html>
